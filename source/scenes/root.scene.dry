@@ -78,7 +78,7 @@ Q.military_proposal_support = 0; // Support for military reform to address the r
 Q.roleplay_proposal_support = 0; // Support for roleplay reform to address the recruitment crisis.
 Q.roleplay_proposal = // Which proposal was adopted by the STU? 0 = None; 1 = 
 Q.adopted_crisis_proposal = 0; // Has the STU adopted any plan to address the crisis?
-
+!}
 new-page: true
 
 [+ total_faction_strength +]
