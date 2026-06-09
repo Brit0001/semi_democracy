@@ -1,0 +1,84 @@
+title: Root Scene
+new-page: true
+go-to: post_event if started = 1; start_menu if started = 0
+
+@start_menu
+new-page: true
+go-to: start_menu_2
+
+= Semi-Democracy: A Fictional History
+
+@start_menu_2
+
+- @start: Start game
+- @election_simulation: Election simulation
+- @credits: Credits
+- @game_over.achievements
+
+
+@start
+on-arrival: {!
+Q.started = 1;
+// time elapsed (in months)
+Q.time = 1;
+Q.year = 2029;
+Q.month = 1;
+// how many actions have been taken this month?
+Q.month_actions = 0;
+
+// 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
+Q.difficulty = 0;
+
+// party resources
+Q.resources = 2;
+// party dues
+Q.dues = 2;
+// government budget
+Q.budget = 2
+
+// the state of the party
+// overall dissent reduces every increase in party support.
+Q.dissent = 0.05;
+Q.dissent_percent = 5;
+
+// factions
+Q.factions = ['intfed', 'populist', 'centrist', 'natsov', 'reformist'];
+// should this be normalized to 100%? Yes, it should be.
+Q.intfed_strength = 15;
+Q.intfed_dissent = 20;
+Q.populist_strength = 30;
+Q.populist_dissent = 0;
+Q.centrist_strength = 25;
+Q.centrist_dissent = 5;
+Q.natsov_strength = 25;
+Q.natsov_dissent = 5;
+Q.reformist_strength = 5;
+Q.reformist_dissent = 10;
+
+Q.total_faction_strength = 0;
+for (var f of Q.factions) {
+  Q.total_faction_strength += Q[f+'_strength']
+}
+  
+// Faction-related special events
+Q.intfeds_resigned = 0;
+Q.natsovs_resigned = 0;
+Q.reformist_coup = 0;
+Q.populist_crisis = 0;
+Q.centrist_crisis = 0;
+
+// Discovered reformism? Reformism is WA-related. Middle-ground between intfed and natsov.
+Q.reformism = 0;
+
+// Recruitment crisis variables
+Q.crisis_urgency = 0; // How seriously does STU treat the recruitment crisis? Affects internal decisions and external perception. Scale from 0 to 10.
+Q.status_quo_reluctance = 14; // How reluctant are STU's moderate factions (Populists and centrists) on changing their approach to address crises? Affects internal decisions. Scale from 0 - 20.
+Q.culture_proposal_support = 0; // Support for cultural reform to address the recruitment crisis.
+Q.military_proposal_support = 0; // Support for military reform to address the recruitment crisis.
+Q.roleplay_proposal_support = 0; // Support for roleplay reform to address the recruitment crisis.
+Q.roleplay_proposal = // Which proposal was adopted by the STU? 0 = None; 1 = 
+Q.adopted_crisis_proposal = 0; // Has the STU adopted any plan to address the crisis?
+
+new-page: true
+
+[+ total_faction_strength +]
