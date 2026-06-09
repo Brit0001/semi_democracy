@@ -1,6 +1,6 @@
 title: Root Scene
 new-page: true
-go-to: start_menu if started = 0
+go-to: start_menu_2 if started = 0
 
 @start_menu
 new-page: true
@@ -78,3 +78,9 @@ Q.adopted_crisis_proposal = 0; // Has the STU adopted any plan to address the cr
 new-page: true
 
 [+ total_faction_strength +]
+
+[+ reformism +]
+
+[+ +]
+
+hello
