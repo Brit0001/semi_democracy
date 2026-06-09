@@ -1,14 +1,7 @@
 title: Root Scene
 new-page: true
-go-to: start_menu_2 if started = 0
-
-@start_menu
-new-page: true
-go-to: start_menu_2
 
 = Semi-Democracy: A Fictional History
-
-@start_menu_2
 
 - @start: Start game
 
