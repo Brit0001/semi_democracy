@@ -1,11 +1,17 @@
 title: Root Scene
 new-page: true
+go-to: post_event if started = 1; start_menu if started = 0
 
-Semi-Democracy: A Fictional History
+@start_menu
+new-page: true
+go-to: start_menu_2
 
-Hello
+= Semi-Democracy: A Fictional History
+
+@start_menu_2
 
 - @start: Start game
+- @credits: Credits
 
 @start
 on-arrival: {!
@@ -25,7 +31,7 @@ Q.resources = 2;
 // party dues
 Q.dues = 2;
 // government budget
-Q.budget = 2
+Q.budget = 4;
 
 // the state of the party
 // overall dissent reduces every increase in party support.
@@ -66,9 +72,87 @@ Q.crisis_urgency = 0; // How seriously does STU treat the recruitment crisis? Af
 Q.status_quo_reluctance = 14; // How reluctant are STU's moderate factions (Populists and centrists) on changing their approach to address crises? Affects internal decisions. Scale from 0 - 20.
 Q.culture_proposal_support = 0; // Support for cultural reform to address the recruitment crisis.
 Q.military_proposal_support = 0; // Support for military reform to address the recruitment crisis.
+Q.military_proposal = 0; // Which proposal was adopted by the STU? 0 = None; 1 = Civilian control of the military and reworking rank structure; 2 = Continuous activity and wargames; 3 =
 Q.roleplay_proposal_support = 0; // Support for roleplay reform to address the recruitment crisis.
-Q.roleplay_proposal = // Which proposal was adopted by the STU? 0 = None; 1 = 
+Q.roleplay_proposal = 0; // Which proposal was adopted by the STU? 0 = None; 1 = Governmental control and elected oversight; 2 = Expansion of RP administration; 3 = Forum presence.
 Q.adopted_crisis_proposal = 0; // Has the STU adopted any plan to address the crisis?
-!}
-new-page: true
-go-to: 2030
+
+// Parties & inter-party relations (range 0 - 100)
+
+Q.parties = ['stu', 'ic', 'la', 'wing', 'uda', 'ipf', 'other'];
+
+Q.ic_relation = 65;
+Q.la_relation = 55;
+Q.wing_relation = 30;
+Q.uda_relation = 15; // Hostile no matter what unless embracing democracy.
+Q.ipf_relation = 35;
+
+Q.ic_leader = "Gaeleria";
+Q.ic_party_leader = "Cessarea II";
+Q.uda_leader = "Federal Staeber";
+Q.uda_party_leader = "Federal Staeber";
+Q.ipf_leader = "Fehr";
+Q.ipf_party_leader = "Fehr";
+
+// State of the region (range 0 -100)
+Q.triarchal_support = 85; // How much the people trust the Luminarchs and the Semi-Democratic system in general.
+Q.waideology = 45; // Natsov vs Intfed. Closer to 0 = more natsov, closer to 100 = more intfed.
+Q.s7_support = 92; // Support for remaining in the S7.
+Q.democratic_support = 10; // Active support for a fully democratic system. Lack of triarchal support does not directly keep up with more democratic support, but it does correlate.
+
+Q.classes = ['roleplayers', 'gaers', 'casual_gamesiders', 'causal_discorders', 'updaters', 'govt_involved']
+Q.roleplayers = 23;
+Q.updaters = 9;
+Q.gaers = 14;
+Q.casual_gamesiders = 15;
+Q.casual_discorders = 27;
+Q.govt_involved = 12;
+
+Q.roleplayers_stu = 10;
+Q.roleplayers_ic = 12;
+Q.roleplayers_la = 55;
+Q.roleplayers_wing = 0;
+Q.roleplayers_uda = 17;
+Q.roleplayers_ipf = 0;
+Q.roleplayers_other = 5;
+
+Q.gaers_stu = 68;
+Q.gaers_ic = 30;
+Q.gaers_la = 0;
+Q.gaers_wing = 0;
+Q.gaers_uda = 17;
+Q.gaers_ipf = 10;
+Q.gaers_other = 0;
+
+Q.casual_gamesiders_stu = 40;
+Q.casual_gamesiders_ic = 10;
+Q.casual_gamesiders_la = 30;
+Q.casual_gamesiders_wing = 0;
+Q.casual_gamesiders_uda = 10;
+Q.casual_gamesiders_ipf = 15;
+Q.casual_gamesiders_other = 12;
+
+Q.casual_discorders_stu = 50;
+Q.casual_discorders_ic = 20;
+Q.casual_discorders_la = 14;
+Q.casual_discorders_wing = 9;
+Q.casual_discorders_uda = 20;
+Q.casual_discorders_ipf = 15;
+Q.casual_discorders_other = 5;
+
+Q.updaters_stu = 15;
+Q.updaters_ic = 0;
+Q.updaters_la = 0;
+Q.updaters_wing = 70;
+Q.updaters_uda = 0;
+Q.updaters_ipf = 10;
+Q.updaters_other = 0;
+
+Q.govt_involved_stu = 70;
+Q.govt_involved_ic = 50;
+Q.govt_involved_la = 0;
+Q.govt_involved_wing = 10;
+Q.govt_involved_uda = 30;
+Q_govt_involved_ipf = 15;
+Q_govt_involved_other = 0;
+
